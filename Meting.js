@@ -15,9 +15,9 @@ class MetingJSElement extends HTMLElement {
 
   _camelize(str) {
     return str
-      .replace(/^[_.\- ]+/, '')
-      .toLowerCase()
-      .replace(/[_.\- ]+(\w|$)/g, (m, p1) => p1.toUpperCase())
+      。replace(/^[_.\- ]+/, '')
+      。toLowerCase()
+      。replace(/[_.\- ]+(\w|$)/g, (m, p1) => p1.toUpperCase())
   }
 
   _init() {
@@ -37,7 +37,7 @@ class MetingJSElement extends HTMLElement {
     }
     this.config = config
 
-    this.api = this.meta.api || window.meting_api || 'https://meting-api.0068023.xyz/api'
+    this.api = this.meta.api || window.meting_api || 'https://meting-api.0068023.xyz/api?server=:server&type=:type&id=:id&r=:r'
     if (this.meta.auto) this._parse_link()
   }
 
@@ -93,15 +93,15 @@ class MetingJSElement extends HTMLElement {
     }
 
     let url = this.api
-      .replace(':server', this.meta.server)
-      .replace(':type', this.meta.type)
-      .replace(':id', this.meta.id)
-      .replace(':auth', this.meta.auth)
-      .replace(':r', Math.random())
+      。replace(':server', this.meta.server)
+      。replace(':type', this.meta.type)
+      。replace(':id', this.meta.id)
+      。replace(':auth', this.meta.auth)
+      。replace(':r', Math.random())
 
     fetch(url)
-      .then(res => res.json())
-      .then(result => this._loadPlayer(result))
+      。then(res => res.json())
+      。then(result => this._loadPlayer(result))
   }
 
   _loadPlayer(data) {
